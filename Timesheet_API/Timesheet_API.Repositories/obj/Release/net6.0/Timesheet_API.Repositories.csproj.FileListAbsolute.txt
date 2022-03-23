@@ -1,0 +1,5 @@
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Repositories\obj\Release\net6.0\Timesheet_API.Repositories.csproj.AssemblyReference.cache
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Repositories\obj\Release\net6.0\Timesheet_API.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Repositories\obj\Release\net6.0\Timesheet_API.Repositories.AssemblyInfoInputs.cache
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Repositories\obj\Release\net6.0\Timesheet_API.Repositories.AssemblyInfo.cs
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Repositories\obj\Release\net6.0\Timesheet_API.Repositories.csproj.CoreCompileInputs.cache

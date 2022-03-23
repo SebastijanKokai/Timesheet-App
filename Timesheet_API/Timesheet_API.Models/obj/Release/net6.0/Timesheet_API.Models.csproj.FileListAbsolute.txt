@@ -1,0 +1,14 @@
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\bin\Release\net6.0\Timesheet_API.Models.deps.json
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\bin\Release\net6.0\Timesheet_API.Models.runtimeconfig.json
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\bin\Release\net6.0\Timesheet_API.Models.dll
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\bin\Release\net6.0\Timesheet_API.Models.pdb
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\Timesheet_API.Models.csproj.AssemblyReference.cache
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\Timesheet_API.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\Timesheet_API.Models.AssemblyInfoInputs.cache
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\Timesheet_API.Models.AssemblyInfo.cs
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\Timesheet_API.Models.csproj.CoreCompileInputs.cache
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\Timesheet_API.Models.dll
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\refint\Timesheet_API.Models.dll
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\Timesheet_API.Models.pdb
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\Timesheet_API.Models.genruntimeconfig.cache
+D:\Programming\VegaPraksa\4-Backend\timesheet\Timesheet_API\Timesheet_API.Models\obj\Release\net6.0\ref\Timesheet_API.Models.dll
