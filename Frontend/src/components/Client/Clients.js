@@ -2,7 +2,7 @@ import ClientItem from "./ClientItem";
 import ClientAddModal from "./ClientAddModal";
 import Letters from "../UI/Letters";
 import Pagination from "../UI/Pagination";
-import { uiActions } from "../../store/ui-slice";
+import { sharedUiActions } from "../../store/shared-ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Clients = () => {
@@ -11,7 +11,7 @@ const Clients = () => {
   const countries = useSelector((state) => state.country.countries);
 
   const toggleClientFormHandler = () => {
-    dispatch(uiActions.toggle());
+    dispatch(sharedUiActions.toggle());
   };
 
   const showModal = useSelector((state) => state.ui.clientModalIsVisible);

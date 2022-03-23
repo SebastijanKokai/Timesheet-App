@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const uiSlice = createSlice({
+const sharedUiSlice = createSlice({
   name: "ui",
   initialState: { clientModalIsVisible: false },
   reducers: {
@@ -10,6 +10,6 @@ const uiSlice = createSlice({
   },
 });
 
-export const uiActions = uiSlice.actions;
+export const sharedUiActions = sharedUiSlice.actions;
 
-export default uiSlice;
+export default sharedUiSlice;

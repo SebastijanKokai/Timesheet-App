@@ -1,6 +1,9 @@
 import useInput from "../../hooks/use-input";
 import { useDispatch } from "react-redux";
-import { deleteClientData, putClientData } from "../../store/client-actions";
+import {
+  deleteClientData,
+  putClientData,
+} from "../../store/client/client-actions";
 
 const ClientUpdateForm = (props) => {
   const dispatch = useDispatch();

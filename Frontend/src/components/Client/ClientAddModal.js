@@ -2,11 +2,8 @@ import useInput from "../../hooks/use-input";
 
 import Modal from "../UI/Modal/Modal";
 
-import API from "../../API/api";
-
 import { useDispatch } from "react-redux";
-import { clientActions } from "../../store/store";
-import { postClientData } from "../../store/client-actions";
+import { postClientData } from "../../store/client/client-actions";
 
 const ClientAddModal = (props) => {
   const dispatch = useDispatch();
@@ -51,10 +48,6 @@ const ClientAddModal = (props) => {
     };
 
     dispatch(postClientData(newClient));
-
-    // const response = await API.post("client", newClient);
-
-    // props.onAdd();
     resetValues();
   };
 
