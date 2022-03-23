@@ -3,7 +3,7 @@ import useInput from "../../hooks/use-input";
 import Modal from "../UI/Modal/Modal";
 
 import { useDispatch } from "react-redux";
-import { postClientData } from "../../store/client/client-actions";
+import { postClientRequest } from "../../store/client/client-actions";
 
 const ClientAddModal = (props) => {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const ClientAddModal = (props) => {
       ZipCode: zipCode,
     };
 
-    dispatch(postClientData(newClient));
+    dispatch(postClientRequest(newClient));
     resetValues();
   };
 

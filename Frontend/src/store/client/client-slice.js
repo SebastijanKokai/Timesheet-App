@@ -1,5 +1,3 @@
-import API from "../../API/api";
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const clientSlice = createSlice({
@@ -9,7 +7,7 @@ const clientSlice = createSlice({
     error: null,
   },
   reducers: {
-    addClients(state, action) {
+    clientsReceived(state, action) {
       const data = action.payload;
 
       for (const key in data) {
@@ -23,36 +21,63 @@ const clientSlice = createSlice({
         });
       }
     },
-    addClient(state, action) {
-      const newClient = action.payload;
-      console.log(newClient);
+    clientCreated(state, action) {
+      const {
+        id,
+        clientName,
+        clientAddress,
+        clientCity,
+        clientZipCode,
+        country,
+      } = action.payload;
+
+      const newClient = {
+        id: id,
+        name: clientName,
+        address: clientAddress,
+        city: clientCity,
+        zipCode: clientZipCode,
+        country: country,
+      };
+
       state.clients.push(newClient);
     },
-    updateClient(state, action) {
-      const client = action.payload;
+    clientUpdated(state, action) {
+      const {
+        id,
+        clientName,
+        clientAddress,
+        clientCity,
+        clientZipCode,
+        country,
+      } = action.payload;
+
+      const newClient = {
+        id: id,
+        name: clientName,
+        address: clientAddress,
+        city: clientCity,
+        zipCode: clientZipCode,
+        country: country,
+      };
 
       const existingClient = state.clients.find(
-        (item) => item.id === client.id
+        (item) => item.id === newClient.id
       );
 
       if (existingClient) {
         const idx = state.clients.indexOf(existingClient);
-        state.clients[idx] = client;
+        state.clients[idx] = newClient;
       }
     },
-    removeClient(state, action) {
-      const id = action.payload;
-      const existingClient = state.clients.find((item) => item.id === id);
-
-      if (existingClient) {
-        state.clients = state.clients.filter((item) => item.id !== id);
-      }
+    clientDeleted(state, action) {
+      state.clients = state.clients.filter(
+        (item) => item.id !== action.payload
+      );
     },
   },
 });
 
 export const clientActions = clientSlice.actions;
-
-export const allClients = (state) => state.client.clients;
 
 export default clientSlice;

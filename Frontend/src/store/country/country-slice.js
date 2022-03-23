@@ -9,7 +9,7 @@ const countrySlice = createSlice({
   reducers: {
     addCountries(state, action) {
       const data = action.payload;
-      console.log(data);
+
       for (const key in data) {
         state.countries.push({
           id: data[key].id,
@@ -21,7 +21,5 @@ const countrySlice = createSlice({
 });
 
 export const countryActions = countrySlice.actions;
-
-export const allCountries = (state) => state.country.countries;
 
 export default countrySlice;

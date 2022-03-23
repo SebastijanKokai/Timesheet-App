@@ -1,44 +1,44 @@
 import { clientActions } from "./client-slice";
 import ClientServices from "../../services/ClientServices";
 
-export const getClientData = () => {
+export const getClientsRequest = () => {
   return async (dispatch) => {
     try {
       const response = await ClientServices.getAll();
-      dispatch(clientActions.addClients(response.data));
+      dispatch(clientActions.clientsReceived(response.data));
     } catch (error) {
       console.log(error.message);
     }
   };
 };
 
-export const postClientData = (newClient) => {
+export const postClientRequest = (newClient) => {
   return async (dispatch) => {
     try {
       const response = await ClientServices.create(newClient);
-      dispatch(clientActions.addClient(response.data)); // client added
+      dispatch(clientActions.clientCreated(response.data));
     } catch (error) {
       console.log(error.message);
     }
   };
 };
 
-export const putClientData = (newClient) => {
+export const putClientRequest = (newClient) => {
   return async (dispatch) => {
     try {
       const response = await ClientServices.update(newClient);
-      dispatch(clientActions.updateClient(response.data));
+      dispatch(clientActions.clientUpdated(response.data));
     } catch (error) {
       console.log(error.message);
     }
   };
 };
 
-export const deleteClientData = (id) => {
+export const deleteClientRequest = (id) => {
   return async (dispatch) => {
     try {
       const response = await ClientServices.delete(id);
-      dispatch(clientActions.removeClient(id));
+      dispatch(clientActions.clientDeleted(id));
     } catch (error) {
       console.log(error.message);
     }

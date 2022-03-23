@@ -1,8 +1,8 @@
 import useInput from "../../hooks/use-input";
 import { useDispatch } from "react-redux";
 import {
-  deleteClientData,
-  putClientData,
+  deleteClientRequest,
+  putClientRequest,
 } from "../../store/client/client-actions";
 
 const ClientUpdateForm = (props) => {
@@ -41,11 +41,11 @@ const ClientUpdateForm = (props) => {
       ZipCode: zipCode,
     };
 
-    dispatch(putClientData(newClient));
+    dispatch(putClientRequest(newClient));
   };
 
   const onDeleteHandler = async () => {
-    dispatch(deleteClientData(props.client.id));
+    dispatch(deleteClientRequest(props.client.id));
   };
 
   return (

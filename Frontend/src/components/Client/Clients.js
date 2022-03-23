@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { getClientsRequest } from "../../store/client/client-actions";
+import { getCountryData } from "../../store/country/country-actions";
 import ClientItem from "./ClientItem";
 import ClientAddModal from "./ClientAddModal";
 import Letters from "../UI/Letters";
@@ -9,12 +12,11 @@ const Clients = () => {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.client.clients);
   const countries = useSelector((state) => state.country.countries);
+  const showModal = useSelector((state) => state.ui.clientModalIsVisible);
 
   const toggleClientFormHandler = () => {
     dispatch(sharedUiActions.toggle());
   };
-
-  const showModal = useSelector((state) => state.ui.clientModalIsVisible);
 
   return (
     <div className="wrapper">

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getClientData } from "./store/client/client-actions";
+import { getClientsRequest } from "./store/client/client-actions";
 import { getCountryData } from "./store/country/country-actions";
 
 import "./App.css";
@@ -11,8 +11,12 @@ import Clients from "./components/Client/Clients";
 
 function App() {
   const dispatch = useDispatch();
-  dispatch(getClientData());
+  dispatch(getClientsRequest());
   dispatch(getCountryData());
+
+  // useEffect(() => {
+
+  // }, [dispatch]);
 
   return (
     <div className="container">
