@@ -1,141 +1,79 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const Letters = (props) => {
-  const [arrayOfItems, setArrayOfItems] = useState([]);
+const DUMMY_CLIENTS = [
+  {
+    letter: "B",
+    count: 0,
+  },
+  {
+    letter: "C",
+    count: 2,
+  },
+  {
+    letter: "D",
+    count: 3,
+  },
+  {
+    letter: "E",
+    count: 0,
+  },
+  {
+    letter: "F",
+    count: 4,
+  },
+];
+
+// const mappedData = DUMMY_CLIENTS.reduce((prevValue, currentValue) => {});
+
+const isLetterDisabled = (letter) => {
+  const foundLetter = DUMMY_CLIENTS.find(
+    (dummyClient) => dummyClient.letter === letter
+  );
+
+  if (!foundLetter) {
+    return false;
+  }
+
+  return foundLetter.count === 0;
+};
+
+const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+const lettersArray = alpha.map((x) => String.fromCharCode(x));
+
+const Letters = ({ getRequest, searchName }) => {
   const dispatch = useDispatch();
+  const selectedLetter = useSelector((state) => state.client.searchLetter);
   const pageNumber = 1;
   const pageSize = 3;
-
-  const getRequest = props.getRequest;
-  const searchName = props.searchName;
 
   const letterClickHandler = (letter) => {
     dispatch(getRequest(pageNumber, pageSize, letter, searchName));
   };
 
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-  useEffect(() => {
-    const allItemLetters = [];
-
-    for (const key in letters) {
-      // Initial first letter, so classname = active
-      if (letters[key] === "C") {
-        allItemLetters.push(
-          <li key={key} className="active">
-            <a onClick={() => letterClickHandler(letters[key])}>
-              {letters[key]}
-            </a>
-          </li>
-        );
-        continue;
-      }
-
-      // Last letter so classname = last
-      if (letters[key] === "Z") {
-        allItemLetters.push(
-          <li key={key} className="last">
-            <a onClick={() => letterClickHandler(letters[key])}>
-              {letters[key]}
-            </a>
-          </li>
-        );
-        continue;
-      }
-
-      // Add list items to array
-      allItemLetters.push(
-        <li key={key}>
-          <a onClick={() => letterClickHandler(letters[key])}>{letters[key]}</a>
-        </li>
-      );
+  const getLetterClassName = (letter) => {
+    if (selectedLetter === letter) {
+      return "active";
     }
-    setArrayOfItems(allItemLetters);
-  }, []);
+
+    if (isLetterDisabled(letter)) {
+      return "disabled";
+    }
+
+    return "";
+  };
 
   return (
     <div className="alpha">
       <ul>
-        {arrayOfItems}
-        {/* <li>
-          <a onClick={() => letterClickHandler("a")}>a</a>
-        </li>
-        <li>
-          <a onClick={() => letterClickHandler("b")}>b</a>
-        </li>
-        <li onClick={() => letterClickHandler("c")}>
-          <a>c</a>
-        </li>
-        <li>
-          <a onClick={() => letterClickHandler("d")}>d</a>
-        </li>
-        <li>
-          <a onClick={() => letterClickHandler("e")}>e</a>
-        </li>
-        <li className="active">
-          <a>f</a>
-        </li>
-        <li>
-          <a>g</a>
-        </li>
-        <li>
-          <a>h</a>
-        </li>
-        <li>
-          <a>i</a>
-        </li>
-        <li>
-          <a>j</a>
-        </li>
-        <li>
-          <a>k</a>
-        </li>
-        <li>
-          <a>l</a>
-        </li>
-        <li className="disabled">
-          <a>m</a>
-        </li>
-        <li>
-          <a>n</a>
-        </li>
-        <li>
-          <a>o</a>
-        </li>
-        <li>
-          <a onClick={() => letterClickHandler("p")}>p</a>
-        </li>
-        <li>
-          <a>q</a>
-        </li>
-        <li>
-          <a>r</a>
-        </li>
-        <li>
-          <a>s</a>
-        </li>
-        <li>
-          <a>t</a>
-        </li>
-        <li>
-          <a>u</a>
-        </li>
-        <li>
-          <a>v</a>
-        </li>
-        <li>
-          <a>w</a>
-        </li>
-        <li>
-          <a>x</a>
-        </li>
-        <li>
-          <a>y</a>
-        </li>
-        <li className="last">
-          <a>z</a>
-        </li> */}
+        {lettersArray.map((letter) => (
+          <li
+            key={`Letter_${letter}`}
+            className={getLetterClassName(letter)}
+            onClick={() => letterClickHandler(letter)}
+          >
+            <a>{letter}</a>
+          </li>
+        ))}
       </ul>
     </div>
   );
