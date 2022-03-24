@@ -7,7 +7,7 @@ const countrySlice = createSlice({
     error: null,
   },
   reducers: {
-    addCountries(state, action) {
+    countriesReceived(state, action) {
       const data = action.payload;
 
       for (const key in data) {

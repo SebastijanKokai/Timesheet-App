@@ -1,12 +1,11 @@
-import API from "../../API/api";
 import { countryActions } from "./country-slice";
 import { CountryServices } from "../../services/CountryServices";
 
-export const getCountryData = () => {
+export const getCountriesRequest = () => {
   return async (dispatch) => {
     try {
       const response = await CountryServices.getAll();
-      dispatch(countryActions.addCountries(response.data));
+      dispatch(countryActions.countriesReceived(response.data));
     } catch (error) {
       console.log(error.message);
     }

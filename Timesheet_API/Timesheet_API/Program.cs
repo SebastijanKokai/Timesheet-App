@@ -80,7 +80,7 @@ var app = builder.Build();
 
 // Configuring CORS
 builder.Services.AddCors();
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithExposedHeaders("X-Pagination").WithOrigins("http://localhost:3000"));
 
 builder.Configuration
     .SetBasePath(app.Environment.ContentRootPath)

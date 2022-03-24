@@ -9,6 +9,8 @@ const store = configureStore({
     country: countrySlice.reducer,
     ui: sharedUiSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 });
 
 export default store;

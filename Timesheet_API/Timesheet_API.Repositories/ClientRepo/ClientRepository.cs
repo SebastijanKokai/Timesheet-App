@@ -20,8 +20,15 @@ namespace Timesheet_API.Repositories.ClientRepo
 
         public PagedList<Client> GetAll(ClientParameters clientParameters)
         {
+            IQueryable<Client> clients = table;
+
+            if (!Char.IsWhiteSpace(clientParameters.FirstLetter))
+            {
+                clients = table.Where(cp => cp.ClientName.FirstOrDefault() == clientParameters.FirstLetter);
+            }
+
             return PagedList<Client>
-                .ToPagedList(table.OrderBy(cp => cp.ClientName),
+                .ToPagedList(clients.OrderBy(cp => cp.ClientName),
                 clientParameters.PageNumber,
                 clientParameters.PageSize);
         }

@@ -4,12 +4,13 @@ const clientSlice = createSlice({
   name: "client",
   initialState: {
     clients: [],
-    error: null,
+    paginationDetails: {},
   },
   reducers: {
     clientsReceived(state, action) {
-      const data = action.payload;
+      const { data, headers } = action.payload;
 
+      state.clients = [];
       for (const key in data) {
         state.clients.push({
           id: data[key].id,
@@ -20,6 +21,8 @@ const clientSlice = createSlice({
           countryId: data[key].countryId,
         });
       }
+
+      state.paginationDetails = JSON.parse(headers["x-pagination"]);
     },
     clientCreated(state, action) {
       const {

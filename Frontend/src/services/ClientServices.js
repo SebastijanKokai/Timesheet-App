@@ -1,8 +1,11 @@
 import API from "../API/api";
 
 const ClientServices = {
-  getAll: async () => {
-    const response = await API.get("client");
+  getAll: async (pageNumber, pageSize) => {
+    const response = await API.get(
+      `client?PageNumber=${pageNumber}&PageSize=${pageSize}`
+    );
+    console.log(pageNumber, pageSize);
     return response;
   },
   create: async (newClient) => {

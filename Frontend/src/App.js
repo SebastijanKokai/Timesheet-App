@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getClientsRequest } from "./store/client/client-actions";
-import { getCountryData } from "./store/country/country-actions";
+import { getCountriesRequest } from "./store/country/country-actions";
 
 import "./App.css";
 import "./assets/css/style.css";
@@ -11,10 +11,11 @@ import Clients from "./components/Client/Clients";
 
 function App() {
   const dispatch = useDispatch();
-
+  const clientPageNumber = 1;
+  const clientPageSize = 3;
   // Sequence of fetching data is important!
-  dispatch(getCountryData());
-  dispatch(getClientsRequest());
+  dispatch(getCountriesRequest());
+  dispatch(getClientsRequest(clientPageNumber, clientPageSize));
 
   return (
     <div className="container">

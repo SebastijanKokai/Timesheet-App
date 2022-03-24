@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { getClientsRequest } from "../../store/client/client-actions";
-import { getCountryData } from "../../store/country/country-actions";
 import ClientItem from "./ClientItem";
 import ClientAddModal from "./ClientAddModal";
 import Letters from "../UI/Letters";
@@ -12,6 +11,9 @@ const Clients = () => {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.client.clients);
   const countries = useSelector((state) => state.country.countries);
+  const paginationDetails = useSelector(
+    (state) => state.client.paginationDetails
+  );
   const showModal = useSelector((state) => state.ui.clientModalIsVisible);
 
   const toggleClientFormHandler = () => {
@@ -48,7 +50,10 @@ const Clients = () => {
             <ClientItem key={client.id} client={client} countries={countries} />
           ))}
         </div>
-        <Pagination />
+        <Pagination
+          paginationDetails={paginationDetails}
+          getRequest={getClientsRequest}
+        />
       </section>
     </div>
   );
