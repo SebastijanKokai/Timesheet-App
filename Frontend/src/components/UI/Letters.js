@@ -8,9 +8,10 @@ const Letters = (props) => {
   const pageSize = 3;
 
   const getRequest = props.getRequest;
+  const searchName = props.searchName;
 
-  const letterClickHandler = (letter, key) => {
-    dispatch(getRequest(pageNumber, pageSize, letter));
+  const letterClickHandler = (letter) => {
+    dispatch(getRequest(pageNumber, pageSize, letter, searchName));
   };
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -22,7 +23,7 @@ const Letters = (props) => {
       // Initial first letter, so classname = active
       if (letters[key] === "C") {
         allItemLetters.push(
-          <li className="active">
+          <li key={key} className="active">
             <a onClick={() => letterClickHandler(letters[key])}>
               {letters[key]}
             </a>
@@ -34,7 +35,7 @@ const Letters = (props) => {
       // Last letter so classname = last
       if (letters[key] === "Z") {
         allItemLetters.push(
-          <li className="last">
+          <li key={key} className="last">
             <a onClick={() => letterClickHandler(letters[key])}>
               {letters[key]}
             </a>
@@ -45,10 +46,8 @@ const Letters = (props) => {
 
       // Add list items to array
       allItemLetters.push(
-        <li>
-          <a onClick={() => letterClickHandler(letters[key], key)}>
-            {letters[key]}
-          </a>
+        <li key={key}>
+          <a onClick={() => letterClickHandler(letters[key])}>{letters[key]}</a>
         </li>
       );
     }

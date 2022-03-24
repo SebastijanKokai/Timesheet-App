@@ -27,10 +27,20 @@ namespace Timesheet_API.Repositories.ClientRepo
                 clients = table.Where(cp => cp.ClientName.FirstOrDefault() == clientParameters.FirstLetter);
             }
 
+            SearchByName(ref clients, clientParameters.Name);
+
             return PagedList<Client>
                 .ToPagedList(clients.OrderBy(cp => cp.ClientName),
                 clientParameters.PageNumber,
                 clientParameters.PageSize);
+        }
+
+        private void SearchByName(ref IQueryable<Client> clients, string clientName)
+        {
+            if (!clients.Any() || string.IsNullOrWhiteSpace(clientName))
+                return;
+
+            clients = clients.Where(cl => cl.ClientName.ToLower().Contains(clientName.Trim().ToLower()));
         }
 
         new public Client GetByID(Guid ID)

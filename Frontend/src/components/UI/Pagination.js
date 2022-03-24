@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Pagination = (props) => {
   const dispatch = useDispatch();
 
   const searchLetter = props.searchLetter;
+  const searchName = props.searchName;
 
   const { TotalCount, PageSize, CurrentPage, HasNext, HasPrevious } =
     props.paginationDetails;
@@ -11,7 +12,7 @@ const Pagination = (props) => {
   const getRequest = props.getRequest;
 
   const changePageHandler = (pageNumber, pageSize) => {
-    dispatch(getRequest(pageNumber, pageSize, searchLetter));
+    dispatch(getRequest(pageNumber, pageSize, searchLetter, searchName));
   };
 
   const numberOfPages = Math.ceil(TotalCount / PageSize);

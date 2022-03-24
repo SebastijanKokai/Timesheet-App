@@ -1,16 +1,12 @@
 import API from "../API/api";
 
 const ClientServices = {
-  getAll: async (pageNumber, pageSize, firstLetter) => {
+  getAll: async (pageNumber, pageSize, firstLetter, searchName) => {
     const response = await API.get(
-      `client?PageNumber=${pageNumber}&PageSize=${pageSize}&FirstLetter=${firstLetter}`
-    );
-
-    return response;
-  },
-  getAllByFirstLetter: async (pageNumber, pageSize, firstLetter) => {
-    const response = await API.get(
-      `client?PageNumber=${pageNumber}&PageSize=${pageSize}&FirstLetter=${firstLetter}`
+      `client?PageNumber=${pageNumber}
+      &PageSize=${pageSize}
+      &FirstLetter=${firstLetter}
+      &Name=${searchName}`
     );
 
     return response;

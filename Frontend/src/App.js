@@ -14,6 +14,7 @@ function App() {
   const clientInitialPageNumber = 1;
   const clientInitialPageSize = 3;
   const clientInitialLetter = "C";
+  const clientInitialName = "";
 
   // Sequence of fetching data is important!
   dispatch(getCountriesRequest());
@@ -21,7 +22,8 @@ function App() {
     getClientsRequest(
       clientInitialPageNumber,
       clientInitialPageSize,
-      clientInitialLetter
+      clientInitialLetter,
+      clientInitialName
     )
   );
 

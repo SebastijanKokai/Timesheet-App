@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { getClientsRequest } from "../../store/client/client-actions";
 import ClientItem from "./ClientItem";
 import ClientAddModal from "./ClientAddModal";
@@ -12,13 +11,27 @@ const Clients = () => {
   const clients = useSelector((state) => state.client.clients);
   const countries = useSelector((state) => state.country.countries);
   const searchLetter = useSelector((state) => state.client.searchLetter);
+  const searchName = useSelector((state) => state.client.searchName);
+
   const paginationDetails = useSelector(
     (state) => state.client.paginationDetails
   );
+
   const showModal = useSelector((state) => state.ui.clientModalIsVisible);
 
   const toggleClientFormHandler = () => {
     dispatch(sharedUiActions.toggle());
+  };
+
+  const searchChangeHandler = (e) => {
+    dispatch(
+      getClientsRequest(
+        paginationDetails.CurrentPage,
+        paginationDetails.PageSize,
+        searchLetter,
+        e.target.value
+      )
+    );
   };
 
   return (
@@ -36,7 +49,12 @@ const Clients = () => {
             Create new client
           </a>
           <div className="search-page">
-            <input type="search" name="search-clients" className="in-search" />
+            <input
+              type="search"
+              name="search-clients"
+              className="in-search"
+              onChange={searchChangeHandler}
+            />
           </div>
         </div>
         {showModal && (
@@ -45,7 +63,7 @@ const Clients = () => {
             countries={countries}
           />
         )}
-        <Letters getRequest={getClientsRequest} />
+        <Letters searchName={searchName} getRequest={getClientsRequest} />
         <div className="accordion-wrap clients">
           {clients.map((client) => (
             <ClientItem key={client.id} client={client} countries={countries} />
@@ -54,6 +72,7 @@ const Clients = () => {
         <Pagination
           paginationDetails={paginationDetails}
           searchLetter={searchLetter}
+          searchName={searchName}
           getRequest={getClientsRequest}
         />
       </section>
