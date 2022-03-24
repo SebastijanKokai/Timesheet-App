@@ -22,7 +22,7 @@ namespace Timesheet_API.Repositories.ClientRepo
         {
             IQueryable<Client> clients = table;
 
-            if (!Char.IsWhiteSpace(clientParameters.FirstLetter))
+            if (clientParameters.FirstLetter != null)
             {
                 clients = table.Where(cp => cp.ClientName.FirstOrDefault() == clientParameters.FirstLetter);
             }

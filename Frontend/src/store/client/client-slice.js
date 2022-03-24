@@ -5,6 +5,7 @@ const clientSlice = createSlice({
   initialState: {
     clients: [],
     paginationDetails: {},
+    searchLetter: "",
   },
   reducers: {
     clientsReceived(state, action) {
@@ -23,6 +24,9 @@ const clientSlice = createSlice({
       }
 
       state.paginationDetails = JSON.parse(headers["x-pagination"]);
+    },
+    searchLetterChanged(state, action) {
+      state.searchLetter = action.payload;
     },
     clientCreated(state, action) {
       const {

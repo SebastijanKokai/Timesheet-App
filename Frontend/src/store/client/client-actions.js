@@ -1,11 +1,16 @@
 import { clientActions } from "./client-slice";
 import ClientServices from "../../services/ClientServices";
 
-export const getClientsRequest = (pageNumber, pageSize) => {
+export const getClientsRequest = (pageNumber, pageSize, firstLetter) => {
   return async (dispatch) => {
     try {
-      const response = await ClientServices.getAll(pageNumber, pageSize);
+      const response = await ClientServices.getAll(
+        pageNumber,
+        pageSize,
+        firstLetter
+      );
       dispatch(clientActions.clientsReceived(response));
+      dispatch(clientActions.searchLetterChanged(firstLetter));
     } catch (error) {
       console.log(error.message);
     }

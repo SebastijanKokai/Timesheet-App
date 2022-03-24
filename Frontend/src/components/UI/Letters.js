@@ -1,85 +1,142 @@
-const Letters = () => {
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+const Letters = (props) => {
+  const [arrayOfItems, setArrayOfItems] = useState([]);
+  const dispatch = useDispatch();
+  const pageNumber = 1;
+  const pageSize = 3;
+
+  const getRequest = props.getRequest;
+
+  const letterClickHandler = (letter, key) => {
+    dispatch(getRequest(pageNumber, pageSize, letter));
+  };
+
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  useEffect(() => {
+    const allItemLetters = [];
+
+    for (const key in letters) {
+      // Initial first letter, so classname = active
+      if (letters[key] === "C") {
+        allItemLetters.push(
+          <li className="active">
+            <a onClick={() => letterClickHandler(letters[key])}>
+              {letters[key]}
+            </a>
+          </li>
+        );
+        continue;
+      }
+
+      // Last letter so classname = last
+      if (letters[key] === "Z") {
+        allItemLetters.push(
+          <li className="last">
+            <a onClick={() => letterClickHandler(letters[key])}>
+              {letters[key]}
+            </a>
+          </li>
+        );
+        continue;
+      }
+
+      // Add list items to array
+      allItemLetters.push(
+        <li>
+          <a onClick={() => letterClickHandler(letters[key], key)}>
+            {letters[key]}
+          </a>
+        </li>
+      );
+    }
+    setArrayOfItems(allItemLetters);
+  }, []);
+
   return (
     <div className="alpha">
       <ul>
-        <li>
-          <a href="javascript:;">a</a>
+        {arrayOfItems}
+        {/* <li>
+          <a onClick={() => letterClickHandler("a")}>a</a>
         </li>
         <li>
-          <a href="javascript:;">b</a>
+          <a onClick={() => letterClickHandler("b")}>b</a>
+        </li>
+        <li onClick={() => letterClickHandler("c")}>
+          <a>c</a>
         </li>
         <li>
-          <a href="javascript:;">c</a>
+          <a onClick={() => letterClickHandler("d")}>d</a>
         </li>
         <li>
-          <a href="javascript:;">d</a>
-        </li>
-        <li>
-          <a href="javascript:;">e</a>
+          <a onClick={() => letterClickHandler("e")}>e</a>
         </li>
         <li className="active">
-          <a href="javascript:;">f</a>
+          <a>f</a>
         </li>
         <li>
-          <a href="javascript:;">g</a>
+          <a>g</a>
         </li>
         <li>
-          <a href="javascript:;">h</a>
+          <a>h</a>
         </li>
         <li>
-          <a href="javascript:;">i</a>
+          <a>i</a>
         </li>
         <li>
-          <a href="javascript:;">j</a>
+          <a>j</a>
         </li>
         <li>
-          <a href="javascript:;">k</a>
+          <a>k</a>
         </li>
         <li>
-          <a href="javascript:;">l</a>
+          <a>l</a>
         </li>
         <li className="disabled">
-          <a href="javascript:;">m</a>
+          <a>m</a>
         </li>
         <li>
-          <a href="javascript:;">n</a>
+          <a>n</a>
         </li>
         <li>
-          <a href="javascript:;">o</a>
+          <a>o</a>
         </li>
         <li>
-          <a href="javascript:;">p</a>
+          <a onClick={() => letterClickHandler("p")}>p</a>
         </li>
         <li>
-          <a href="javascript:;">q</a>
+          <a>q</a>
         </li>
         <li>
-          <a href="javascript:;">r</a>
+          <a>r</a>
         </li>
         <li>
-          <a href="javascript:;">s</a>
+          <a>s</a>
         </li>
         <li>
-          <a href="javascript:;">t</a>
+          <a>t</a>
         </li>
         <li>
-          <a href="javascript:;">u</a>
+          <a>u</a>
         </li>
         <li>
-          <a href="javascript:;">v</a>
+          <a>v</a>
         </li>
         <li>
-          <a href="javascript:;">w</a>
+          <a>w</a>
         </li>
         <li>
-          <a href="javascript:;">x</a>
+          <a>x</a>
         </li>
         <li>
-          <a href="javascript:;">y</a>
+          <a>y</a>
         </li>
         <li className="last">
-          <a href="javascript:;">z</a>
-        </li>
+          <a>z</a>
+        </li> */}
       </ul>
     </div>
   );

@@ -2,6 +2,6 @@
 {
     public class ClientParameters : QueryStringParameters
     {
-        public char FirstLetter { get; set; } = ' ';
+        public char? FirstLetter { get; set; } = null;
     }
 }

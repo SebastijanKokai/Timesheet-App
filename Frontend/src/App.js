@@ -11,11 +11,19 @@ import Clients from "./components/Client/Clients";
 
 function App() {
   const dispatch = useDispatch();
-  const clientPageNumber = 1;
-  const clientPageSize = 3;
+  const clientInitialPageNumber = 1;
+  const clientInitialPageSize = 3;
+  const clientInitialLetter = "C";
+
   // Sequence of fetching data is important!
   dispatch(getCountriesRequest());
-  dispatch(getClientsRequest(clientPageNumber, clientPageSize));
+  dispatch(
+    getClientsRequest(
+      clientInitialPageNumber,
+      clientInitialPageSize,
+      clientInitialLetter
+    )
+  );
 
   return (
     <div className="container">

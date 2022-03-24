@@ -11,6 +11,7 @@ const Clients = () => {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.client.clients);
   const countries = useSelector((state) => state.country.countries);
+  const searchLetter = useSelector((state) => state.client.searchLetter);
   const paginationDetails = useSelector(
     (state) => state.client.paginationDetails
   );
@@ -44,7 +45,7 @@ const Clients = () => {
             countries={countries}
           />
         )}
-        <Letters />
+        <Letters getRequest={getClientsRequest} />
         <div className="accordion-wrap clients">
           {clients.map((client) => (
             <ClientItem key={client.id} client={client} countries={countries} />
@@ -52,6 +53,7 @@ const Clients = () => {
         </div>
         <Pagination
           paginationDetails={paginationDetails}
+          searchLetter={searchLetter}
           getRequest={getClientsRequest}
         />
       </section>

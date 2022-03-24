@@ -1,7 +1,9 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Pagination = (props) => {
   const dispatch = useDispatch();
+
+  const searchLetter = props.searchLetter;
 
   const { TotalCount, PageSize, CurrentPage, HasNext, HasPrevious } =
     props.paginationDetails;
@@ -9,14 +11,13 @@ const Pagination = (props) => {
   const getRequest = props.getRequest;
 
   const changePageHandler = (pageNumber, pageSize) => {
-    dispatch(getRequest(pageNumber, pageSize));
+    dispatch(getRequest(pageNumber, pageSize, searchLetter));
   };
 
   const numberOfPages = Math.ceil(TotalCount / PageSize);
 
   let prevButtonClass = HasPrevious ? "last" : "";
   let nextButtonClass = HasNext ? "last" : "";
-  console.log(props.getRequest);
   return (
     <div className="pagination">
       <ul>
