@@ -5,7 +5,7 @@ const useInput = (client) => {
   const [address, setAddress] = useState(client.address);
   const [city, setCity] = useState(client.city);
   const [zipCode, setZipCode] = useState(client.zipCode);
-  const [country, setCountry] = useState(client.country);
+  const [countryId, setCountryId] = useState(client.countryId);
 
   const clientNameChangeHandler = (e) => {
     setClientName(e.target.value);
@@ -24,7 +24,7 @@ const useInput = (client) => {
   };
 
   const countryChangeHandler = (e) => {
-    setCountry(e.target.value);
+    setCountryId(e.target.value);
   };
 
   const resetValues = () => {
@@ -32,7 +32,7 @@ const useInput = (client) => {
     setAddress("");
     setCity("");
     setZipCode("");
-    setCountry("");
+    setCountryId("");
   };
 
   return {
@@ -40,7 +40,7 @@ const useInput = (client) => {
     address,
     city,
     zipCode,
-    country,
+    countryId,
     clientNameChangeHandler,
     addressChangeHandler,
     cityChangeHandler,

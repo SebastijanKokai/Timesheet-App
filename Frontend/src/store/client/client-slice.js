@@ -17,7 +17,7 @@ const clientSlice = createSlice({
           address: data[key].clientAddress,
           city: data[key].clientCity,
           zipCode: data[key].clientZipCode,
-          country: data[key].country.countryName,
+          countryId: data[key].countryId,
         });
       }
     },
@@ -28,7 +28,7 @@ const clientSlice = createSlice({
         clientAddress,
         clientCity,
         clientZipCode,
-        country,
+        countryId,
       } = action.payload;
 
       const newClient = {
@@ -37,7 +37,7 @@ const clientSlice = createSlice({
         address: clientAddress,
         city: clientCity,
         zipCode: clientZipCode,
-        country: country,
+        countryId: countryId,
       };
 
       state.clients.push(newClient);

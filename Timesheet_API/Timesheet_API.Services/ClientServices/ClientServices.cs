@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Timesheet_API.Models.Dto.ClientDtos;
+using Timesheet_API.Models.Helpers;
 using Timesheet_API.Models.Models;
+using Timesheet_API.Models.Parameters;
 using Timesheet_API.Repositories.ClientRepo;
 using Timesheet_API.Repositories.CountryRepo;
 
@@ -24,6 +26,11 @@ namespace Timesheet_API.Services.ClientServices
             return clientRepository.GetAll();
         }
 
+        public PagedList<Client> FindAll(ClientParameters clientParameters)
+        {
+            return clientRepository.GetAll(clientParameters);
+        }
+
         public Client FindByID(Guid ID)
         {
             return clientRepository.GetByID(ID);
@@ -31,7 +38,7 @@ namespace Timesheet_API.Services.ClientServices
 
         public Client Create(ClientPostDto clientPostDto)
         {
-            Country country = countryRepository.GetCountryByName(clientPostDto.Country);
+            Country country = countryRepository.GetByID(clientPostDto.CountryId);
 
             if (country == null)
             {
@@ -58,7 +65,7 @@ namespace Timesheet_API.Services.ClientServices
                 throw new NullReferenceException("Client with given ID does not exist.");
             }
 
-            Country country = countryRepository.GetCountryByName(clientUpdateDto.Country);
+            Country country = countryRepository.GetByID(clientUpdateDto.CountryId);
 
             if (country == null)
             {

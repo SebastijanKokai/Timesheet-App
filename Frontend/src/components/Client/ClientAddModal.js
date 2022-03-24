@@ -13,7 +13,7 @@ const ClientAddModal = (props) => {
     address,
     city,
     zipCode,
-    country,
+    countryId,
     clientNameChangeHandler,
     addressChangeHandler,
     cityChangeHandler,
@@ -21,7 +21,7 @@ const ClientAddModal = (props) => {
     countryChangeHandler,
     resetValues,
   } = useInput({
-    country: "",
+    countryId: "",
     name: "",
     address: "",
     city: "",
@@ -30,7 +30,7 @@ const ClientAddModal = (props) => {
 
   const onSaveHandler = async () => {
     if (
-      country === "" ||
+      countryId === "" ||
       clientName === "" ||
       address === "" ||
       city === "" ||
@@ -40,7 +40,7 @@ const ClientAddModal = (props) => {
     }
 
     const newClient = {
-      Country: country,
+      CountryId: countryId,
       Name: clientName,
       Address: address,
       City: city,
@@ -94,12 +94,12 @@ const ClientAddModal = (props) => {
           </li>
           <li>
             <label>Country:</label>
-            <select onChange={countryChangeHandler} defaultValue="">
-              <option value="" disabled>
+            <select onChange={countryChangeHandler}>
+              <option value="" disabled hidden selected>
                 Select country
               </option>
               {props.countries.map((country) => (
-                <option key={country.id} value={country.name}>
+                <option key={country.id} value={country.id}>
                   {country.name}
                 </option>
               ))}

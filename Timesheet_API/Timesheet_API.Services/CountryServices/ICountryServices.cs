@@ -7,5 +7,6 @@ namespace Timesheet_API.Services.CountryServices
     {
         public Country Create(CountryDto countryDto);
         public Country Update(CountryUpdateDto countryUpdateDto);
+        public CountryDto[] CreateMany(CountryDto[] countryDtos);
     }
 }

@@ -43,6 +43,15 @@ namespace Timesheet_API.Services.CountryServices
             return country;
         }
 
+        public CountryDto[] CreateMany(CountryDto[] countryDtos)
+        {
+            for(int i = 0; i < countryDtos.Length; i++)
+            {
+                Create(countryDtos[i]);
+            }
+            return countryDtos;
+        }
+
         public Country Update(CountryUpdateDto countryUpdateDto)
         {
             Country country = countryRepository.GetByID(countryUpdateDto.Id);

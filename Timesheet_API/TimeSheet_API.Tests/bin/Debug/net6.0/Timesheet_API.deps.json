@@ -619,6 +619,7 @@
         "dependencies": {
           "AutoMapper": "11.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Newtonsoft.Json": "13.0.1",
           "Timesheet_API.Models": "1.0.0",
           "Timesheet_API.Repositories": "1.0.0"
         },

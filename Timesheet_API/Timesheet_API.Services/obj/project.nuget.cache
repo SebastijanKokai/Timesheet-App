@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rdxj5d3sC1glMlVIrAJ00u4qUhXQ4y2oIedvrnESB236VA6lkc/90/NLvyKg1s9moVyjjo/bKRhnuYJLa7hevg==",
+  "dgSpecHash": "9bYYjLuAtPTLgbrSTOwCcP6V+3G1ou6Xv3IZN0x4z19PtoskyeCeVecG1po4HkNO1mFl1oozYyKKoLOiqzmi1w==",
   "success": true,
   "projectFilePath": "D:\\Programming\\VegaPraksa\\5-Frontend\\Timesheet_API\\Timesheet_API.Services\\Timesheet_API.Services.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,7 @@
     "C:\\Users\\Sebastijan\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Sebastijan\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Sebastijan\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Sebastijan\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Sebastijan\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Sebastijan\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\Sebastijan\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

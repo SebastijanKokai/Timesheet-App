@@ -11,12 +11,10 @@ import Clients from "./components/Client/Clients";
 
 function App() {
   const dispatch = useDispatch();
-  dispatch(getClientsRequest());
+
+  // Sequence of fetching data is important!
   dispatch(getCountryData());
-
-  // useEffect(() => {
-
-  // }, [dispatch]);
+  dispatch(getClientsRequest());
 
   return (
     <div className="container">

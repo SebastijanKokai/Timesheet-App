@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Timesheet_API.Models.Dto.ClientDtos;
+using Timesheet_API.Models.Parameters;
 using Timesheet_API.Services.ClientServices;
 
 namespace Timesheet_API.Controllers
@@ -19,9 +21,22 @@ namespace Timesheet_API.Controllers
         public IActionResult HandlerError() => Problem();
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] ClientParameters clientParameters)
         {
-            return Ok(clientServices.FindAll());
+            var clients = clientServices.FindAll(clientParameters);
+
+            var metadata = new
+            {
+                clients.TotalCount,
+                clients.PageSize,
+                clients.CurrentPage,
+                clients.HasNext,
+                clients.HasPrevious
+            };
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            return Ok(clients);
         }
 
         [HttpGet("{id}")]

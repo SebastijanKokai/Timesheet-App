@@ -13,7 +13,7 @@ const ClientUpdateForm = (props) => {
     address,
     city,
     zipCode,
-    country,
+    countryId,
     clientNameChangeHandler,
     addressChangeHandler,
     cityChangeHandler,
@@ -23,7 +23,7 @@ const ClientUpdateForm = (props) => {
 
   const onSaveHandler = async () => {
     if (
-      country === "" ||
+      countryId === "" ||
       clientName === "" ||
       address === "" ||
       city === "" ||
@@ -34,7 +34,7 @@ const ClientUpdateForm = (props) => {
 
     const newClient = {
       Id: props.client.id,
-      Country: country,
+      CountryId: countryId,
       Name: clientName,
       Address: address,
       City: city,
@@ -83,11 +83,11 @@ const ClientUpdateForm = (props) => {
         <li>
           <label>Country:</label>
           <select
-            defaultValue={props.client.country}
+            defaultValue={props.client.countryId}
             onChange={countryChangeHandler}
           >
             {props.countries.map((country) => (
-              <option key={country.id} value={country.name}>
+              <option key={country.id} value={country.id}>
                 {country.name}
               </option>
             ))}

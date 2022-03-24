@@ -18,6 +18,12 @@ namespace Timesheet_API.Controllers
         [Route("/error-development")]
         public IActionResult HandlerError() => Problem();
 
+        [HttpPost("{id}")]
+        public IActionResult InsertMany(CountryDto[] countryDtos)
+        {
+            return Ok(countryServices.CreateMany(countryDtos));
+        }
+
         [HttpGet]
         public IActionResult GetAll()
         {

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Timesheet_API.Models.Data;
+using Timesheet_API.Models.Helpers;
 using Timesheet_API.Models.Models;
+using Timesheet_API.Models.Parameters;
 
 namespace Timesheet_API.Repositories.ClientRepo
 {
@@ -16,9 +18,12 @@ namespace Timesheet_API.Repositories.ClientRepo
 
         }
 
-        new public IList<Client> GetAll()
+        public PagedList<Client> GetAll(ClientParameters clientParameters)
         {
-            return table.Include(t => t.Country).ToList();
+            return PagedList<Client>
+                .ToPagedList(table.OrderBy(cp => cp.ClientName),
+                clientParameters.PageNumber,
+                clientParameters.PageSize);
         }
 
         new public Client GetByID(Guid ID)
@@ -30,7 +35,9 @@ namespace Timesheet_API.Repositories.ClientRepo
 
         public Client GetClientByName(string name)
         {
-            return table.Where(p => p.ClientName == name).FirstOrDefault();
+            return table
+                .Where(p => p.ClientName == name)
+                .FirstOrDefault();
         }
 
         public override Client Delete(Guid ID)
