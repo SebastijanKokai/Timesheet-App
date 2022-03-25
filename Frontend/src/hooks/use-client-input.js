@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useInput = (client) => {
+const useClientInput = (client) => {
   const [clientName, setClientName] = useState(client.name);
   const [address, setAddress] = useState(client.address);
   const [city, setCity] = useState(client.city);
@@ -50,4 +50,4 @@ const useInput = (client) => {
   };
 };
 
-export default useInput;
+export default useClientInput;

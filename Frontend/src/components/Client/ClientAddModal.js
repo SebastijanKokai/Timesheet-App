@@ -1,4 +1,4 @@
-import useInput from "../../hooks/use-input";
+import useClientInput from "../../hooks/use-client-input";
 
 import Modal from "../UI/Modal/Modal";
 
@@ -26,7 +26,7 @@ const ClientAddModal = (props) => {
     zipCodeChangeHandler,
     countryChangeHandler,
     resetValues,
-  } = useInput({
+  } = useClientInput({
     countryId: "",
     name: "",
     address: "",

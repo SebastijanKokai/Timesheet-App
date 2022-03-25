@@ -35,10 +35,11 @@ export const getFirstLettersArray = () => {
   };
 };
 
-export const postClientRequest = (newProject) => {
+export const postProjectRequest = (newProject) => {
   return async (dispatch) => {
     try {
       const response = await ProjectServices.create(newProject);
+      console.log(response);
       dispatch(projectActions.projectCreated(response.data));
     } catch (error) {
       console.log(error.message);
@@ -46,7 +47,7 @@ export const postClientRequest = (newProject) => {
   };
 };
 
-export const putClientRequest = (newProject) => {
+export const putProjectRequest = (newProject) => {
   return async (dispatch) => {
     try {
       const response = await ProjectServices.update(newProject);
@@ -57,7 +58,7 @@ export const putClientRequest = (newProject) => {
   };
 };
 
-export const deleteClientRequest = (id) => {
+export const deleteProjectRequest = (id) => {
   return async (dispatch) => {
     try {
       const response = await ProjectServices.delete(id);

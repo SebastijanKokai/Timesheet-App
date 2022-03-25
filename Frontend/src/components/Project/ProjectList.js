@@ -1,18 +1,19 @@
 import { getProjectsRequest } from "../../store/project/project-actions";
 import { sharedUiActions } from "../../store/shared-ui-slice";
+import { useSelector, useDispatch } from "react-redux";
 
 import ListHeader from "../UI/ListHeader/ListHeader";
 import ListHeaderInput from "../UI/ListHeader/ListHeaderInput";
 import Letters from "../UI/Letters/Letters";
 import Pagination from "../UI/Pagination/Pagination";
 import ProjectItem from "./ProjectItem";
-
-import { useSelector, useDispatch } from "react-redux";
+import ProjectAddModal from "./ProjectAddModal";
 
 const ProjectList = () => {
   const dispatch = useDispatch();
 
   const projects = useSelector((state) => state.project.projects);
+  const clients = useSelector((state) => state.client.allClients);
   const paginationDetails = useSelector(
     (state) => state.project.paginationDetails
   );
@@ -48,6 +49,12 @@ const ProjectList = () => {
           componentName={"Project"}
           searchChangeHandler={searchChangeHandler}
         />
+        {showModal && (
+          <ProjectAddModal
+            onClose={toggleProjectFormHandler}
+            clients={clients}
+          />
+        )}
         <Letters
           searchName={searchName}
           searchLetter={searchLetter}

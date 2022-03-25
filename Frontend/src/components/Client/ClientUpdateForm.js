@@ -1,4 +1,4 @@
-import useInput from "../../hooks/use-input";
+import useClientInput from "../../hooks/use-client-input";
 import { useDispatch } from "react-redux";
 import {
   deleteClientRequest,
@@ -24,7 +24,7 @@ const ClientUpdateForm = (props) => {
     cityChangeHandler,
     zipCodeChangeHandler,
     countryChangeHandler,
-  } = useInput(props.client);
+  } = useClientInput(props.client);
 
   const onSaveHandler = async () => {
     if (

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  sortClientsByName,
   pushAndSortItems,
   extractNewClientProperties,
 } from "./client-slice-helper-methods";
@@ -9,6 +8,7 @@ const clientSlice = createSlice({
   name: "client",
   initialState: {
     clients: [],
+    allClients: [],
     paginationDetails: {},
     searchLetter: "",
     searchName: "",
@@ -25,6 +25,14 @@ const clientSlice = createSlice({
       }
 
       state.paginationDetails = JSON.parse(headers["x-pagination"]);
+    },
+    allClientsReceived(state, action) {
+      const { data } = action.payload;
+      state.allClients = [];
+      for (const key in data) {
+        const newClient = extractNewClientProperties(data[key]);
+        state.allClients.push(newClient);
+      }
     },
     searchLetterChanged(state, action) {
       state.searchLetter = action.payload;

@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import {
   getClientsRequest,
+  getAllClientsRequest,
   getFirstLettersArray as clientsFirstLetterArray,
 } from "./store/client/client-actions";
 import {
@@ -45,6 +46,7 @@ function App() {
       InitialName
     )
   );
+  dispatch(getAllClientsRequest());
   dispatch(projectsFirstLetterArray());
 
   return (

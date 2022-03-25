@@ -24,11 +24,22 @@ export const getClientsRequest = (
   };
 };
 
+export const getAllClientsRequest = () => {
+  return async (dispatch) => {
+    try {
+      const response = await ClientServices.getAllWithoutParams();
+      dispatch(clientActions.allClientsReceived(response));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
 export const getFirstLettersArray = () => {
   return async (dispatch) => {
     try {
       const response = await ClientServices.getFirstLettersArray();
-      console.log(response);
+
       dispatch(clientActions.firstLettersArrayChanged(response));
     } catch (error) {
       console.log(error.message);

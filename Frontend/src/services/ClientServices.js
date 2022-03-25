@@ -11,6 +11,14 @@ const ClientServices = {
 
     return response;
   },
+  getAllWithoutParams: async () => {
+    const response = await API.get(
+      `client?PageNumber=1
+      &PageSize=50`
+    );
+
+    return response;
+  },
   getFirstLettersArray: async () => {
     const response = await API.get("client/firstlettersarray");
     return response;
