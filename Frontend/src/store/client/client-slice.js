@@ -1,4 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  sortClientsByName,
+  pushAndSortItems,
+  extractNewClientProperties,
+} from "./client-slice-helper-methods";
 
 const clientSlice = createSlice({
   name: "client",
@@ -15,14 +20,8 @@ const clientSlice = createSlice({
 
       state.clients = [];
       for (const key in data) {
-        state.clients.push({
-          id: data[key].id,
-          name: data[key].clientName,
-          address: data[key].clientAddress,
-          city: data[key].clientCity,
-          zipCode: data[key].clientZipCode,
-          countryId: data[key].countryId,
-        });
+        const newClient = extractNewClientProperties(data[key]);
+        state.clients.push(newClient);
       }
 
       state.paginationDetails = JSON.parse(headers["x-pagination"]);
@@ -38,44 +37,25 @@ const clientSlice = createSlice({
       state.firstLettersArray = data;
     },
     clientCreated(state, action) {
-      const {
-        id,
-        clientName,
-        clientAddress,
-        clientCity,
-        clientZipCode,
-        countryId,
-      } = action.payload;
+      const newClient = extractNewClientProperties(action.payload);
 
-      const newClient = {
-        id: id,
-        name: clientName,
-        address: clientAddress,
-        city: clientCity,
-        zipCode: clientZipCode,
-        countryId: countryId,
-      };
+      if (newClient.name === "") {
+        return;
+      }
 
-      state.clients.push(newClient);
+      const firstLetter = newClient.name.charAt(0);
+
+      if (!state.firstLettersArray.find((letter) => letter === firstLetter)) {
+        state.firstLettersArray.push(firstLetter);
+      }
+
+      if (state.searchLetter === firstLetter) {
+        const newClientsState = pushAndSortItems(state.clients, newClient);
+        state.clients = newClientsState;
+      }
     },
     clientUpdated(state, action) {
-      const {
-        id,
-        clientName,
-        clientAddress,
-        clientCity,
-        clientZipCode,
-        country,
-      } = action.payload;
-
-      const newClient = {
-        id: id,
-        name: clientName,
-        address: clientAddress,
-        city: clientCity,
-        zipCode: clientZipCode,
-        country: country,
-      };
+      const newClient = extractNewClientProperties(action.payload);
 
       const existingClient = state.clients.find(
         (item) => item.id === newClient.id

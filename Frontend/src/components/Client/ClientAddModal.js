@@ -98,8 +98,8 @@ const ClientAddModal = (props) => {
           </li>
           <li>
             <label>Country:</label>
-            <select onChange={countryChangeHandler}>
-              <option value="" disabled hidden selected>
+            <select onChange={countryChangeHandler} defaultValue="Default">
+              <option value="Default" disabled hidden>
                 Select country
               </option>
               {props.countries.map((country) => (

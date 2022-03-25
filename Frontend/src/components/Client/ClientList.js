@@ -1,12 +1,15 @@
 import { getClientsRequest } from "../../store/client/client-actions";
+import { sharedUiActions } from "../../store/shared-ui-slice";
+import { useDispatch, useSelector } from "react-redux";
+
+import ListHeader from "../ComponentSections/ListHeader";
+import ListHeaderInput from "../ComponentSections/ListHeaderInput";
 import ClientItem from "./ClientItem";
 import ClientAddModal from "./ClientAddModal";
 import Letters from "../UI/Letters/Letters";
 import Pagination from "../UI/Pagination/Pagination";
-import { sharedUiActions } from "../../store/shared-ui-slice";
-import { useDispatch, useSelector } from "react-redux";
 
-const Clients = () => {
+const ClientList = () => {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.client.clients);
   const countries = useSelector((state) => state.country.countries);
@@ -40,26 +43,12 @@ const Clients = () => {
   return (
     <div className="wrapper">
       <section className="content">
-        <h2>
-          <i className="ico clients"></i>Clients
-        </h2>
-        <div className="grey-box-wrap reports">
-          <a
-            href="#new-member"
-            className="link new-member-popup"
-            onClick={toggleClientFormHandler}
-          >
-            Create new client
-          </a>
-          <div className="search-page">
-            <input
-              type="search"
-              name="search-clients"
-              className="in-search"
-              onChange={searchChangeHandler}
-            />
-          </div>
-        </div>
+        <ListHeader pageName={"Clients"} />
+        <ListHeaderInput
+          toggleFormHandler={toggleClientFormHandler}
+          componentName={"Client"}
+          searchChangeHandler={searchChangeHandler}
+        />
         {showModal && (
           <ClientAddModal
             onClose={toggleClientFormHandler}
@@ -88,4 +77,4 @@ const Clients = () => {
   );
 };
 
-export default Clients;
+export default ClientList;

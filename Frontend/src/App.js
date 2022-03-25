@@ -9,7 +9,7 @@ import "./App.css";
 import "./assets/css/style.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import Clients from "./components/Client/Clients";
+import ClientList from "./components/Client/ClientList";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="container">
       <Nav />
-      <Clients />
+      <ClientList />
       <Footer />
     </div>
   );
