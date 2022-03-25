@@ -26,7 +26,7 @@ const ClientList = () => {
   const showModal = useSelector((state) => state.ui.clientModalIsVisible);
 
   const toggleClientFormHandler = () => {
-    dispatch(sharedUiActions.toggle());
+    dispatch(sharedUiActions.toggleClientModal());
   };
 
   const searchChangeHandler = (e) => {

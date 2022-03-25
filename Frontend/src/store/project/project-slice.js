@@ -15,7 +15,13 @@ const projectSlice = createSlice({
 
       state.projects = [];
       for (const key in data) {
-        const newProject = {};
+        const newProject = {
+          id: data[key].id,
+          clientId: data[key].id,
+          name: data[key].projectName,
+          description: data[key].projectDescription,
+          status: data[key].projectStatus,
+        };
         state.projects.push(newProject);
       }
 

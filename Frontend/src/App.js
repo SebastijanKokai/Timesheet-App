@@ -1,8 +1,12 @@
 import { useDispatch } from "react-redux";
 import {
   getClientsRequest,
-  getFirstLettersArray,
+  getFirstLettersArray as clientsFirstLetterArray,
 } from "./store/client/client-actions";
+import {
+  getProjectsRequest,
+  getFirstLettersArray as projectsFirstLetterArray,
+} from "./store/project/project-actions";
 import { getCountriesRequest } from "./store/country/country-actions";
 
 import "./App.css";
@@ -17,22 +21,31 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
-  const clientInitialPageNumber = 1;
-  const clientInitialPageSize = 3;
-  const clientInitialLetter = "C";
-  const clientInitialName = "";
+  const InitialPageNumber = 1;
+  const InitialPageSize = 3;
+  const InitialLetter = "C";
+  const InitialName = "";
 
   // Sequence of fetching data is important!
   dispatch(getCountriesRequest());
   dispatch(
     getClientsRequest(
-      clientInitialPageNumber,
-      clientInitialPageSize,
-      clientInitialLetter,
-      clientInitialName
+      InitialPageNumber,
+      InitialPageSize,
+      InitialLetter,
+      InitialName
     )
   );
-  dispatch(getFirstLettersArray());
+  dispatch(clientsFirstLetterArray());
+  dispatch(
+    getProjectsRequest(
+      InitialPageNumber,
+      InitialPageSize,
+      InitialLetter,
+      InitialName
+    )
+  );
+  dispatch(projectsFirstLetterArray());
 
   return (
     <Router>

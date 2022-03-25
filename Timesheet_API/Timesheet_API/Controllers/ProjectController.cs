@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Timesheet_API.Models.Dto.ProjectDtos;
 using Timesheet_API.Models.Parameters;
 using Timesheet_API.Services.ProjectServices;
@@ -22,7 +23,20 @@ namespace Timesheet_API.Controllers
         [HttpGet]
         public IActionResult GetAll([FromQuery] ProjectParameters projectParameters)
         {
-            return Ok(projectServices.FindAll(projectParameters));
+            var projects = projectServices.FindAll(projectParameters);
+
+            var metadata = new
+            {
+                projects.TotalCount,
+                projects.PageSize,
+                projects.CurrentPage,
+                projects.HasNext,
+                projects.HasPrevious
+            };
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            return Ok(projects);
         }
 
         [HttpGet("FirstLettersArray")]

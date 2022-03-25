@@ -1,4 +1,4 @@
-const InputListItem = ({ labelName, onChange, defaultValue }) => {
+const InputListItem = ({ labelName, onChange, defaultValue, value }) => {
   return (
     <li>
       <label>{labelName}</label>
@@ -6,6 +6,7 @@ const InputListItem = ({ labelName, onChange, defaultValue }) => {
         type="text"
         className="in-text"
         onChange={onChange}
+        value={value}
         defaultValue={defaultValue}
       />
     </li>

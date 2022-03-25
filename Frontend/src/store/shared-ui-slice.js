@@ -2,10 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const sharedUiSlice = createSlice({
   name: "ui",
-  initialState: { clientModalIsVisible: false },
+  initialState: { clientModalIsVisible: false, projectModalIsVisible: false },
   reducers: {
-    toggle(state) {
+    toggleClientModal(state) {
       state.clientModalIsVisible = !state.clientModalIsVisible;
+    },
+    toggleProjectModal(state) {
+      state.projectModalIsVisible = !state.projectModalIsVisible;
     },
   },
 });

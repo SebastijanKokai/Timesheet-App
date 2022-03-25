@@ -2,6 +2,9 @@ import useInput from "../../hooks/use-input";
 
 import Modal from "../UI/Modal/Modal";
 
+import InputListItem from "../UI/ListItems/InputListItem";
+import SelectItem from "../UI/ListItems/SelectItem";
+
 import { useDispatch } from "react-redux";
 import {
   postClientRequest,
@@ -60,55 +63,32 @@ const ClientAddModal = (props) => {
       <div id="new-member" className="new-member-inner">
         <h2>Create new client</h2>
         <ul className="form">
-          <li>
-            <label>Client name:</label>
-            <input
-              type="text"
-              className="in-text"
-              onChange={clientNameChangeHandler}
-              value={clientName}
-            />
-          </li>
-          <li>
-            <label>Address:</label>
-            <input
-              type="text"
-              className="in-text"
-              onChange={addressChangeHandler}
-              value={address}
-            />
-          </li>
-          <li>
-            <label>City:</label>
-            <input
-              type="text"
-              className="in-text"
-              onChange={cityChangeHandler}
-              value={city}
-            />
-          </li>
-          <li>
-            <label>Zip/Postal code:</label>
-            <input
-              type="text"
-              className="in-text"
-              onChange={zipCodeChangeHandler}
-              value={zipCode}
-            />
-          </li>
-          <li>
-            <label>Country:</label>
-            <select onChange={countryChangeHandler} defaultValue="Default">
-              <option value="Default" disabled hidden>
-                Select country
-              </option>
-              {props.countries.map((country) => (
-                <option key={country.id} value={country.id}>
-                  {country.name}
-                </option>
-              ))}
-            </select>
-          </li>
+          <InputListItem
+            labelName={"Client name:"}
+            onChange={clientNameChangeHandler}
+            value={clientName}
+          />
+          <InputListItem
+            labelName={"Address:"}
+            onChange={addressChangeHandler}
+            value={address}
+          />
+          <InputListItem
+            labelName={"City:"}
+            onChange={cityChangeHandler}
+            value={city}
+          />
+          <InputListItem
+            labelName={"Zip/Postal code:"}
+            onChange={zipCodeChangeHandler}
+            value={zipCode}
+          />
+          <SelectItem
+            labelName="Country:"
+            onChange={countryChangeHandler}
+            defaultValue="Default"
+            objectArray={props.countries}
+          />
         </ul>
         <div className="buttons">
           <div className="inner">

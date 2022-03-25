@@ -6,8 +6,8 @@ import {
   getFirstLettersArray,
 } from "../../store/client/client-actions";
 
-import InputListItem from "../UI/UpdateForm/InputListItem";
-import SelectItem from "../UI/UpdateForm/SelectItem";
+import InputListItem from "../UI/ListItems/InputListItem";
+import SelectItem from "../UI/ListItems/SelectItem";
 import UpdateButtons from "../UI/UpdateForm/UpdateButtons";
 
 const ClientUpdateForm = (props) => {
