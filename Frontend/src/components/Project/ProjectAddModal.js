@@ -3,7 +3,10 @@ import InputListItem from "../UI/ListItems/InputListItem";
 import SelectItem from "../UI/ListItems/SelectItem";
 import useProjectInput from "../../hooks/use-project-input";
 import { useDispatch } from "react-redux";
-import { postProjectRequest } from "../../store/project/project-actions";
+import {
+  postProjectRequest,
+  getFirstLettersArray,
+} from "../../store/project/project-actions";
 
 const ProjectAddModal = ({ onClose, clients }) => {
   const dispatch = useDispatch();
@@ -40,6 +43,8 @@ const ProjectAddModal = ({ onClose, clients }) => {
     console.log(newProject);
 
     dispatch(postProjectRequest(newProject));
+    dispatch(getFirstLettersArray());
+    resetValues();
   };
 
   return (

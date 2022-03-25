@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  pushAndSortItems,
-  extractNewClientProperties,
-} from "./client-slice-helper-methods";
+import { extractNewClientProperties } from "./client-slice-helper-methods";
+import { pushAndSortItems } from "../helper-methods/helper-methods";
 
 const clientSlice = createSlice({
   name: "client",

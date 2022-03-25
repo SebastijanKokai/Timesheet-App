@@ -33,7 +33,7 @@ namespace Timesheet_API.Services.ClientServices
 
         public List<string> FindFirstLettersOfClientsThatExist()
         {
-            return clientRepository.GetFirstLettersOfObjectsArray();
+            return clientRepository.GetFirstLettersOfClientsArray();
         }
 
         public Client FindByID(Guid ID)

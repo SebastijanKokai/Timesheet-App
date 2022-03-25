@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { extractNewProjectProperties } from "./project-slice-helper-methods";
+import { pushAndSortItems } from "../helper-methods/helper-methods";
 
 const projectSlice = createSlice({
   name: "project",
@@ -15,13 +17,7 @@ const projectSlice = createSlice({
 
       state.projects = [];
       for (const key in data) {
-        const newProject = {
-          id: data[key].id,
-          clientId: data[key].id,
-          name: data[key].projectName,
-          description: data[key].projectDescription,
-          status: data[key].projectStatus,
-        };
+        const newProject = extractNewProjectProperties(data[key]);
         state.projects.push(newProject);
       }
 
@@ -38,7 +34,7 @@ const projectSlice = createSlice({
       state.firstLettersArray = data;
     },
     projectCreated(state, action) {
-      const newProject = {};
+      const newProject = extractNewProjectProperties(action.payload);
 
       if (newProject.name === "") {
         return;
@@ -51,8 +47,8 @@ const projectSlice = createSlice({
       }
 
       if (state.searchLetter === firstLetter) {
-        // const newClientsState = pushAndSortItems(state.clients, newClient);
-        // state.clients = newClientsState;
+        const newProjectsState = pushAndSortItems(state.projects, newProject);
+        state.projects = newProjectsState;
       }
     },
     projectUpdated(state, action) {

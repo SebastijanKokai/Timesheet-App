@@ -33,7 +33,7 @@ namespace Timesheet_API.Services.ProjectServices
 
         public List<string> FindFirstLettersOfProjectsThatExist()
         {
-            return projectRepository.GetFirstLettersOfObjectsArray();
+            return projectRepository.GetFirstLettersOfProjectsArray();
         }
 
         public Project FindByID(Guid ID)

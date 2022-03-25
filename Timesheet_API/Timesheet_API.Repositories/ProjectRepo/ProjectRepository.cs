@@ -18,7 +18,7 @@ namespace Timesheet_API.Repositories.ProjectRepo
 
         }
 
-        public PagedList<Project> GetAll(QueryStringParameters projectParameters)
+        public PagedList<Project> GetAll(ProjectParameters projectParameters)
         {
             IQueryable<Project> projects = table;
 
@@ -43,7 +43,7 @@ namespace Timesheet_API.Repositories.ProjectRepo
             projects = projects.Where(pr => pr.ProjectName.ToLower().Contains(projectName.Trim().ToLower()));
         }
 
-        public List<string> GetFirstLettersOfObjectsArray()
+        public List<string> GetFirstLettersOfProjectsArray()
         {
             var projects = (from pr in table
                            let first = pr.ProjectName.Substring(0, 1)
