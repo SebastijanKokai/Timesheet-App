@@ -1,20 +1,8 @@
-import React, { useState } from "react";
-
 import ClientUpdateForm from "./ClientUpdateForm";
+import useToggleClass from "../../hooks/use-toggle-class";
 
 const ClientItem = (props) => {
-  const [itemClass, setItemClass] = useState("item");
-  const [formClass, setFormClass] = useState("none");
-
-  const toggleItemHandler = () => {
-    if (itemClass === "item") {
-      setItemClass("item open");
-      setFormClass("block");
-    } else {
-      setItemClass("item");
-      setFormClass("none");
-    }
-  };
+  const { itemClass, formClass, toggleItemHandler } = useToggleClass();
 
   return (
     <div className={itemClass}>

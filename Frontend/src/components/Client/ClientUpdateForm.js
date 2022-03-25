@@ -6,6 +6,10 @@ import {
   getFirstLettersArray,
 } from "../../store/client/client-actions";
 
+import InputListItem from "../UI/UpdateForm/InputListItem";
+import SelectItem from "../UI/UpdateForm/SelectItem";
+import UpdateButtons from "../UI/UpdateForm/UpdateButtons";
+
 const ClientUpdateForm = (props) => {
   const dispatch = useDispatch();
 
@@ -53,70 +57,41 @@ const ClientUpdateForm = (props) => {
   return (
     <div className="details" style={{ display: props.formClass }}>
       <ul className="form">
-        <li>
-          <label>Client name:</label>
-          <input
-            type="text"
-            className="in-text"
-            onChange={clientNameChangeHandler}
-            defaultValue={props.client.name}
-          />
-        </li>
-        <li>
-          <label>Zip/Postal code:</label>
-          <input
-            type="text"
-            className="in-text"
-            onChange={zipCodeChangeHandler}
-            defaultValue={props.client.zipCode}
-          />
-        </li>
+        <InputListItem
+          labelName={"Client name:"}
+          onChange={clientNameChangeHandler}
+          defaultValue={props.client.name}
+        />
+        <InputListItem
+          labelName={"Zip/Postal code:"}
+          onChange={zipCodeChangeHandler}
+          defaultValue={props.client.zipCode}
+        />
       </ul>
       <ul className="form">
-        <li>
-          <label>Address:</label>
-          <input
-            type="text"
-            className="in-text"
-            onChange={addressChangeHandler}
-            defaultValue={props.client.address}
-          />
-        </li>
-        <li>
-          <label>Country:</label>
-          <select
-            defaultValue={props.client.countryId}
-            onChange={countryChangeHandler}
-          >
-            {props.countries.map((country) => (
-              <option key={country.id} value={country.id}>
-                {country.name}
-              </option>
-            ))}
-          </select>
-        </li>
+        <InputListItem
+          labelName={"Address:"}
+          onChange={addressChangeHandler}
+          defaultValue={props.client.address}
+        />
+        <SelectItem
+          labelName={"Country:"}
+          defaultValue={props.client.countryId}
+          onChange={countryChangeHandler}
+          objectArray={props.countries}
+        />
       </ul>
       <ul className="form last">
-        <li>
-          <label>City:</label>
-          <input
-            type="text"
-            className="in-text"
-            onChange={cityChangeHandler}
-            defaultValue={props.client.city}
-          />
-        </li>
+        <InputListItem
+          labelName={"City:"}
+          onChange={cityChangeHandler}
+          defaultValue={props.client.city}
+        />
       </ul>
-      <div className="buttons">
-        <div className="inner">
-          <button onClick={onSaveHandler} className="btn green">
-            Save
-          </button>
-          <button onClick={onDeleteHandler} className="btn red">
-            Delete
-          </button>
-        </div>
-      </div>
+      <UpdateButtons
+        onSaveHandler={onSaveHandler}
+        onDeleteHandler={onDeleteHandler}
+      />
     </div>
   );
 };

@@ -7,9 +7,13 @@ import { getCountriesRequest } from "./store/country/country-actions";
 
 import "./App.css";
 import "./assets/css/style.css";
-import Nav from "./components/Nav";
+import PageHeader from "./components/PageHeader/PageHeader";
 import Footer from "./components/Footer";
 import ClientList from "./components/Client/ClientList";
+import ProjectList from "./components/Project/ProjectList";
+import MainContainer from "./components/UI/Containers/MainContainer";
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,11 +35,17 @@ function App() {
   dispatch(getFirstLettersArray());
 
   return (
-    <div className="container">
-      <Nav />
-      <ClientList />
-      <Footer />
-    </div>
+    <Router>
+      <MainContainer>
+        <PageHeader />
+        <Routes>
+          <Route exact path="/" element={<ClientList />}></Route>
+          <Route exact path="/clients" element={<ClientList />}></Route>
+          <Route exact path="/projects" element={<ProjectList />}></Route>
+        </Routes>
+        <Footer />
+      </MainContainer>
+    </Router>
   );
 }
 

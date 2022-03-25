@@ -2,8 +2,8 @@ import { getClientsRequest } from "../../store/client/client-actions";
 import { sharedUiActions } from "../../store/shared-ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 
-import ListHeader from "../ComponentSections/ListHeader";
-import ListHeaderInput from "../ComponentSections/ListHeaderInput";
+import ListHeader from "../UI/ListHeader/ListHeader";
+import ListHeaderInput from "../UI/ListHeader/ListHeaderInput";
 import ClientItem from "./ClientItem";
 import ClientAddModal from "./ClientAddModal";
 import Letters from "../UI/Letters/Letters";
