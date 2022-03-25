@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import {
   deleteClientRequest,
   putClientRequest,
+  getFirstLettersArray,
 } from "../../store/client/client-actions";
 
 const ClientUpdateForm = (props) => {
@@ -42,6 +43,7 @@ const ClientUpdateForm = (props) => {
     };
 
     dispatch(putClientRequest(newClient));
+    dispatch(getFirstLettersArray());
   };
 
   const onDeleteHandler = async () => {

@@ -39,6 +39,12 @@ namespace Timesheet_API.Controllers
             return Ok(clients);
         }
 
+        [HttpGet("FirstLettersArray")]
+        public IActionResult GetFirstLettersArrayOfClientsThatExist()
+        {
+            return Ok(clientServices.FindFirstLettersOfClientsThatExist());
+        }
+
         [HttpGet("{id}")]
         public IActionResult GetByID(Guid ID)
         {

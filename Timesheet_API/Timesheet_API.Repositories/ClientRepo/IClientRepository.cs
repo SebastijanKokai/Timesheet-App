@@ -8,5 +8,7 @@ namespace Timesheet_API.Repositories.ClientRepo
     {
         public PagedList<Client> GetAll(ClientParameters clientParameters);
         public Client GetClientByName(string name);
+
+        public List<string> GetFirstLettersOfClientsThatExist();
     }
 }

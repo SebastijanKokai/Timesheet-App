@@ -11,6 +11,10 @@ const ClientServices = {
 
     return response;
   },
+  getFirstLettersArray: async () => {
+    const response = await API.get("client/firstlettersarray");
+    return response;
+  },
   create: async (newClient) => {
     const response = await API.post("client", newClient);
     return response;

@@ -3,7 +3,10 @@ import useInput from "../../hooks/use-input";
 import Modal from "../UI/Modal/Modal";
 
 import { useDispatch } from "react-redux";
-import { postClientRequest } from "../../store/client/client-actions";
+import {
+  postClientRequest,
+  getFirstLettersArray,
+} from "../../store/client/client-actions";
 
 const ClientAddModal = (props) => {
   const dispatch = useDispatch();
@@ -48,6 +51,7 @@ const ClientAddModal = (props) => {
     };
 
     dispatch(postClientRequest(newClient));
+    dispatch(getFirstLettersArray());
     resetValues();
   };
 

@@ -1,8 +1,8 @@
 import { getClientsRequest } from "../../store/client/client-actions";
 import ClientItem from "./ClientItem";
 import ClientAddModal from "./ClientAddModal";
-import Letters from "../UI/Letters";
-import Pagination from "../UI/Pagination";
+import Letters from "../UI/Letters/Letters";
+import Pagination from "../UI/Pagination/Pagination";
 import { sharedUiActions } from "../../store/shared-ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,6 +12,9 @@ const Clients = () => {
   const countries = useSelector((state) => state.country.countries);
   const searchLetter = useSelector((state) => state.client.searchLetter);
   const searchName = useSelector((state) => state.client.searchName);
+  const firstLettersArray = useSelector(
+    (state) => state.client.firstLettersArray
+  );
 
   const paginationDetails = useSelector(
     (state) => state.client.paginationDetails
@@ -63,7 +66,12 @@ const Clients = () => {
             countries={countries}
           />
         )}
-        <Letters searchName={searchName} getRequest={getClientsRequest} />
+        <Letters
+          searchName={searchName}
+          searchLetter={searchLetter}
+          getRequest={getClientsRequest}
+          firstLettersArray={firstLettersArray}
+        />
         <div className="accordion-wrap clients">
           {clients.map((client) => (
             <ClientItem key={client.id} client={client} countries={countries} />

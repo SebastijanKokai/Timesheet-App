@@ -31,6 +31,11 @@ namespace Timesheet_API.Services.ClientServices
             return clientRepository.GetAll(clientParameters);
         }
 
+        public List<string> FindFirstLettersOfClientsThatExist()
+        {
+            return clientRepository.GetFirstLettersOfClientsThatExist();
+        }
+
         public Client FindByID(Guid ID)
         {
             return clientRepository.GetByID(ID);

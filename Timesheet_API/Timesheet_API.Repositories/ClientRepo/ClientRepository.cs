@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using Timesheet_API.Models.Data;
 using Timesheet_API.Models.Helpers;
 using Timesheet_API.Models.Models;
@@ -41,6 +42,23 @@ namespace Timesheet_API.Repositories.ClientRepo
                 return;
 
             clients = clients.Where(cl => cl.ClientName.ToLower().Contains(clientName.Trim().ToLower()));
+        }
+
+        public List<string> GetFirstLettersOfClientsThatExist()
+        {
+            var clients = (from cl in table
+                            let first = cl.ClientName.Substring(0, 1)
+                            orderby first
+                            select first).Distinct();
+
+            List<string> firstLetters = new List<string>();
+
+            foreach(var item in clients)
+            {
+                firstLetters.Add(item);
+            }
+
+            return firstLetters;
         }
 
         new public Client GetByID(Guid ID)

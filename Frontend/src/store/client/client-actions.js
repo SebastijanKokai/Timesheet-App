@@ -24,6 +24,18 @@ export const getClientsRequest = (
   };
 };
 
+export const getFirstLettersArray = () => {
+  return async (dispatch) => {
+    try {
+      const response = await ClientServices.getFirstLettersArray();
+      console.log(response);
+      dispatch(clientActions.firstLettersArrayChanged(response));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
 export const postClientRequest = (newClient) => {
   return async (dispatch) => {
     try {

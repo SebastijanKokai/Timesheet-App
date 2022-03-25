@@ -10,5 +10,6 @@ namespace Timesheet_API.Services.ClientServices
         public PagedList<Client> FindAll(ClientParameters clientParameters);
         public Client Create(ClientPostDto clientPostDto);
         public Client Update(ClientUpdateDto clientUpdateDto);
+        public List<string> FindFirstLettersOfClientsThatExist();
     }
 }

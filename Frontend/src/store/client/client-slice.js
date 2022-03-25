@@ -7,6 +7,7 @@ const clientSlice = createSlice({
     paginationDetails: {},
     searchLetter: "",
     searchName: "",
+    firstLettersArray: [],
   },
   reducers: {
     clientsReceived(state, action) {
@@ -31,6 +32,10 @@ const clientSlice = createSlice({
     },
     searchNameChanged(state, action) {
       state.searchName = action.payload;
+    },
+    firstLettersArrayChanged(state, action) {
+      const { data } = action.payload;
+      state.firstLettersArray = data;
     },
     clientCreated(state, action) {
       const {

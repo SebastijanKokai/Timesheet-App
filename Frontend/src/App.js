@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { getClientsRequest } from "./store/client/client-actions";
+import {
+  getClientsRequest,
+  getFirstLettersArray,
+} from "./store/client/client-actions";
 import { getCountriesRequest } from "./store/country/country-actions";
 
 import "./App.css";
@@ -25,6 +28,7 @@ function App() {
       clientInitialName
     )
   );
+  dispatch(getFirstLettersArray());
 
   return (
     <div className="container">
