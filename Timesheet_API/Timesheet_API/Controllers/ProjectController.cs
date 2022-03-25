@@ -24,6 +24,8 @@ namespace Timesheet_API.Controllers
             return Ok(projectServices.FindAll());
         }
 
+        
+
         [HttpGet("{id}")]
         public IActionResult GetByID(Guid ID)
         {

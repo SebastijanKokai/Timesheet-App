@@ -8,28 +8,28 @@ const ProjectList = () => {
     <div className="wrapper">
       <section className="content">
         <ListHeader pageName={"Projects"} />
-        {/* <ListHeaderInput
-          toggleFormHandler={toggleClientFormHandler}
-          componentName={"Client"}
-          searchChangeHandler={searchChangeHandler}
+        <ListHeaderInput
+          toggleFormHandler={() => {}}
+          componentName={"Project"}
+          searchChangeHandler={() => {}}
         />
         <Letters
-          searchName={searchName}
-          searchLetter={searchLetter}
-          getRequest={getClientsRequest}
-          firstLettersArray={firstLettersArray}
+          searchName={""}
+          searchLetter={""}
+          getRequest={() => {}}
+          firstLettersArray={""}
         />
-        <div className="accordion-wrap clients">
+        {/* <div className="accordion-wrap clients">
           {clients.map((client) => (
             <ClientItem key={client.id} client={client} countries={countries} />
           ))}
-        </div>
+        </div> */}
         <Pagination
-          paginationDetails={paginationDetails}
-          searchLetter={searchLetter}
-          searchName={searchName}
-          getRequest={getClientsRequest}
-        /> */}
+          paginationDetails={{}}
+          searchLetter={""}
+          searchName={""}
+          getRequest={() => {}}
+        />
       </section>
     </div>
   );

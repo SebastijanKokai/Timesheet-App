@@ -2,6 +2,9 @@
 {
     public abstract class QueryStringParameters
     {
+        public char? FirstLetter { get; set; } = null;
+        public string? Name { get; set; } = null;
+
         const int maxPageSize = 50;
         public int PageNumber { get; set; } = 1;
 
