@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Timesheet_API.Models.Dto.ProjectDtos;
+using Timesheet_API.Models.Parameters;
 using Timesheet_API.Services.ProjectServices;
 
 namespace Timesheet_API.Controllers
@@ -19,12 +20,16 @@ namespace Timesheet_API.Controllers
         public IActionResult HandlerError() => Problem();
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] ProjectParameters projectParameters)
         {
-            return Ok(projectServices.FindAll());
+            return Ok(projectServices.FindAll(projectParameters));
         }
 
-        
+        [HttpGet("FirstLettersArray")]
+        public IActionResult GetFirstLettersArrayOfProjectsThatExist()
+        {
+            return Ok(projectServices.FindFirstLettersOfProjectsThatExist());
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetByID(Guid ID)

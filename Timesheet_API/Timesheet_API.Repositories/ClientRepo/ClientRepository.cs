@@ -19,7 +19,7 @@ namespace Timesheet_API.Repositories.ClientRepo
 
         }
 
-        public PagedList<Client> GetAll(ClientParameters clientParameters)
+        public PagedList<Client> GetAll(QueryStringParameters clientParameters)
         {
             IQueryable<Client> clients = table;
 
@@ -44,7 +44,7 @@ namespace Timesheet_API.Repositories.ClientRepo
             clients = clients.Where(cl => cl.ClientName.ToLower().Contains(clientName.Trim().ToLower()));
         }
 
-        public List<string> GetFirstLettersOfClientsThatExist()
+        public List<string> GetFirstLettersOfObjectsArray()
         {
             var clients = (from cl in table
                             let first = cl.ClientName.Substring(0, 1)
@@ -86,6 +86,5 @@ namespace Timesheet_API.Repositories.ClientRepo
             }
             throw new NullReferenceException("There is no Client with given ID.");
         }
-
     }
 }

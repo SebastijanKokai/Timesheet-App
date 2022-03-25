@@ -2,7 +2,8 @@
 
 namespace Timesheet_API.Repositories.ProjectRepo
 {
-    public interface IProjectRepository : IRepository<Project>
+    public interface IProjectRepository : IRepository<Project>, IParametersRepository<Project>
     {
+
     }
 }

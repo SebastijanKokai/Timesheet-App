@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Timesheet_API.Models.Dto.ProjectDtos;
+using Timesheet_API.Models.Helpers;
 using Timesheet_API.Models.Models;
+using Timesheet_API.Models.Parameters;
 using Timesheet_API.Repositories.ClientRepo;
 using Timesheet_API.Repositories.ProjectRepo;
 
@@ -23,6 +25,17 @@ namespace Timesheet_API.Services.ProjectServices
         {
             return projectRepository.GetAll();
         }
+
+        public PagedList<Project> FindAll(ProjectParameters projectParameters)
+        {
+            return projectRepository.GetAll(projectParameters);
+        }
+
+        public List<string> FindFirstLettersOfProjectsThatExist()
+        {
+            return projectRepository.GetFirstLettersOfObjectsArray();
+        }
+
         public Project FindByID(Guid ID)
         {
             return projectRepository.GetByID(ID);
@@ -85,5 +98,7 @@ namespace Timesheet_API.Services.ProjectServices
             projectRepository.Save();
             return project;
         }
+
+        
     }
 }
